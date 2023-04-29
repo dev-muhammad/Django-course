@@ -3,13 +3,20 @@ from rest_framework.permissions import AllowAny
 from rest_framework.mixins import RetrieveModelMixin, ListModelMixin
 
 from my_app.models import Book
-from my_app.serializers import BookSerializer, BookShortSerializer
+from my_app.serializers import BookSerializer, BookShortSerializer, BookCreateSerializer
 
 class BookViewSet(ModelViewSet):
 
     permission_classes = [AllowAny]
     queryset = Book.objects.all()
-    serializer_class = BookSerializer
+    # serializer_class = BookSerializer
+    
+    def get_serializer_class(self):
+        if self.action == "create":
+            return BookCreateSerializer
+        return BookSerializer
+
+
 
 
 class Book1ViewSet(ListModelMixin, RetrieveModelMixin, GenericViewSet):

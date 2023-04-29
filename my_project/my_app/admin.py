@@ -1,9 +1,13 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
-from my_app.models import Book, Author, Category
+from my_app.models import Book, Author, Category, Contact
 
 admin.site.unregister(Group)
 
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    pass
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
