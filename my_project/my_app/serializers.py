@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 
 from my_app.models import Book, Author, Category, Contact
 
@@ -23,6 +24,12 @@ class ContactSerializer(serializers.ModelSerializer):
         data = super(ContactSerializer, self).to_representation(instance)
         data["test"] = "test value"
         return data
+
+class CategoryFullSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Category
+        fields = "__all__"
 
 class CategorySerializer(serializers.ModelSerializer):
 
@@ -66,3 +73,23 @@ class BookCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = "__all__"
+
+    # def validate(self, data):
+    #     value = data.get("publish_year")
+    #     if value is None:
+    #         raise serializers.ValidationError({"publish_year":"Поле publish_year объязательный"})
+    #     if int(value) > 2023:
+    #         raise serializers.ValidationError({"publish_year":"Не ужеле это книга из будещего?"})
+    #     return super().validate(data)
+
+    def validate_publish_year(self, value):
+        if int(value) > 2022:
+            raise serializers.ValidationError("Не ужеле это книга из будещего?")
+        
+        return value
+
+    def create(self, validated_data):
+        validated_data["cover_type"] = "Hard cover"
+        if validated_data.get("publish_year", True):
+            validated_data["publish_year"]= "2023"
+        return super().create(validated_data)
