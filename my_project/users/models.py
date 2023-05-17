@@ -17,13 +17,13 @@ class UserManager(BaseUserManager):
     for authentication instead of usernames.
     """
 
-    def create(self, **kwargs):
-        """
-        Overriding create to create Token for new created user
-        """
-        user = super().create(**kwargs)
-        #Token.objects.get_or_create(user=user)
-        return user
+    # def create(self, **kwargs):
+    #     """
+    #     Overriding create to create Token for new created user
+    #     """
+    #     user = super().create(**kwargs)
+    #     Token.objects.get_or_create(user=user)
+    #     return user
     
     def create_user(self, nickname, password, **extra_fields):
         """

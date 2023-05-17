@@ -8,7 +8,7 @@ from my_app.serializers import BookSerializer, BookShortSerializer, BookCreateSe
 class BookViewSet(ModelViewSet):
 
     permission_classes = [AllowAny]
-    queryset = Book.objects.all()
+    queryset = Book.objects.filter()
     # serializer_class = BookSerializer
     
     def get_serializer_class(self):

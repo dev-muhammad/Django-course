@@ -1,6 +1,8 @@
 # CityBook project
 
 ## apps:
+
+- common
 - categories
 - locations
 - establishments
