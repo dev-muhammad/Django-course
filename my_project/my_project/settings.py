@@ -41,10 +41,11 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     "my_app",
     "users",
-    *(["drf_spectacular",] if DEBUG else []),
+    *(["drf_spectacular", "debug_toolbar",] if DEBUG else []),
 ]
 
 MIDDLEWARE = [
+    *(["debug_toolbar.middleware.DebugToolbarMiddleware",] if DEBUG else []),
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -53,6 +54,11 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+
 
 ROOT_URLCONF = "my_project.urls"
 

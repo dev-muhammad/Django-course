@@ -21,6 +21,9 @@ class AuthorAdmin(admin.ModelAdmin):
     def book_counts(self, instance):
         return instance.books.count()
     book_counts.short_description = "Количество книг"
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).prefetch_related('books')
     
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
@@ -33,12 +36,15 @@ class BookAdmin(admin.ModelAdmin):
     date_hierarchy = "create_time"
     
     def my_categories(self, instance):
-        return ", ".join([i[0] for i in instance.categories.all().values_list("title")])
-        # return ", ".join([i.title for i in instance.categories.all()])
+        # return ", ".join([i[0] for i in instance.categories.all().values_list("title")])
+        return ", ".join([i.title for i in instance.categories.all()])
     my_categories.short_description = "Категории"
 
     def my_field(self, instance):
         return f"Hello {instance.publish_year}"
     my_field.short_description = "Кастомное поле"
+
+    def get_queryset(self, request):
+        return super().get_queryset(request).select_related('author').prefetch_related('categories')
 
 #admin.site.register(Book, BookAdmin)

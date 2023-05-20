@@ -33,3 +33,9 @@ if settings.DEBUG:
         #path('docs/', SpectacularSwaggerView.as_view(url_name='api-schema'), name='swagger-ui'),
         path('redoc/', SpectacularRedocView.as_view(url_name='api-schema'), name='redoc'),
     ]
+
+    import debug_toolbar
+
+    urlpatterns +=[
+        path('__debug__/', include(debug_toolbar.urls)),
+    ]

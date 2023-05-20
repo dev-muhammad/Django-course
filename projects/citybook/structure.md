@@ -3,11 +3,20 @@
 ## apps:
 
 - common
+- users
 - categories
 - locations
 - establishments
 
 ## Models:
+
+Users:
+    - User (abstactUser)
+        - id (uuid)
+        - username (string)
+        - email (email)
+        - first_name
+        - last_name
 
 Common:
     - BaseModel:

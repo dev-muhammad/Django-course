@@ -31,7 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 CUSTOM_APPS = [
     "common",
-    "categories"
+    "categories",
+    "users",
 ]
 
 THIRD_PARTY_APPS = [
@@ -97,6 +98,8 @@ SPECTACULAR_SETTINGS = {
 }
 
 ROOT_URLCONF = "config.urls"
+
+AUTH_USER_MODEL = "users.user"
 
 TEMPLATES = [
     {
