@@ -1,18 +1,18 @@
 [
 {
-    "model": "auth.user",
+    "model": "users.user",
     "pk": 1,
     "fields": {
-        "password": "pbkdf2_sha256$600000$YTFVpN3kjFTpl4QQihY0Sz$E4SjEq/0pQRi8U4tQJ3s1r3Oe/uRZ0OJJWl3l1t6OBc=",
-        "last_login": "2023-05-06T04:51:16.524Z",
+        "password": "pbkdf2_sha256$600000$k23C11E8usmprue0cgQYXG$7gmgJ+l2kW0oo72j17LH5Xm1j/oJMixBqv8s0FUxjvo=",
+        "last_login": null,
         "is_superuser": true,
         "username": "admin",
         "first_name": "",
         "last_name": "",
-        "email": "admin@mail.ru",
+        "email": "admin@mail.com",
         "is_staff": true,
         "is_active": true,
-        "date_joined": "2023-05-06T04:50:40.557Z",
+        "date_joined": "2023-05-20T05:07:09.569Z",
         "groups": [],
         "user_permissions": []
     }
