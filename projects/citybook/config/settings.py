@@ -35,6 +35,7 @@ CUSTOM_APPS = [
     "categories",
     "users",
     "authentification",
+    "locations",
 ]
 
 THIRD_PARTY_APPS = [

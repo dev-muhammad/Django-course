@@ -16,8 +16,13 @@ class CategoryViewSet(GenericViewSet,
     
     queryset = Category.objects.filter(is_active=True)
     serializer_class = CategoryShortSerializer
-    permission_classes = [AllowAny]
+    #permission_classes = [AllowAny]
     http_method_names = ['get', 'patch', 'post']
+
+    def get_permissions(self):
+        if self.action in ('create', 'partial_update'):
+            return [IsAuthenticated()]
+        return [AllowAny()]
 
     def get_serializer_class(self):
         if self.action in ('create', 'partial_update'):

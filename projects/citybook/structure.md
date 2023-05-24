@@ -4,6 +4,7 @@
 
 - common
 - users
+- authentification
 - categories
 - locations
 - establishments
@@ -38,10 +39,6 @@ Locations:
         - title (varchar 70)
         - description (varchar 512)
         - country (fk country)
-    - Gps location:
-        - place (fk place)
-        - lat (positive float)
-        - lon (positive float)
 
 Estableshments:
     - Place:
@@ -54,6 +51,10 @@ Estableshments:
         - photos (related field)
         - work hours (m2m working hours)
         - gps location (related Gps location)
+    - Gps location:
+        - place (fk place)
+        - lat (positive float)
+        - lon (positive float)
     - Contact:
         - primary phone (varchar 12)
         - secondary phone (varchar 12)
