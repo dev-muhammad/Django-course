@@ -36,6 +36,7 @@ CUSTOM_APPS = [
     "users",
     "authentification",
     "locations",
+    "estableshments",
 ]
 
 THIRD_PARTY_APPS = [
@@ -90,9 +91,6 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "0.0.1",
     "SERVE_PERMISSIONS": [
         "rest_framework.permissions.AllowAny",
-    ],
-    "SERVERS": [
-        {"url": "http://127.0.0.1:8000", "description": "Local server"},
     ],
     "SWAGGER_UI_SETTINGS": {
         "deepLinking": True,

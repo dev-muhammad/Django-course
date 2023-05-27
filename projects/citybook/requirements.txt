@@ -2,6 +2,7 @@ asgiref==3.6.0
 attrs==23.1.0
 Django==4.2
 django-debug-toolbar==4.1.0
+django-filter==23.2
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.2.2
 drf-spectacular==0.26.2

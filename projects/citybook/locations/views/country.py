@@ -3,19 +3,19 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.decorators import action
 
-from ..serializers import *
-from ..models import Category
+from ..serializers import CountryShortSerializer, CountryFullSerializer, CityShortSerializer
+from ..models import Country
 
 
-class CategoryViewSet(GenericViewSet,
+class CountryViewSet(GenericViewSet,
                     mixins.ListModelMixin, 
                     mixins.RetrieveModelMixin,
                     mixins.UpdateModelMixin,
                     mixins.CreateModelMixin
                     ):
     
-    queryset = Category.objects.filter(is_active=True)
-    serializer_class = CategoryShortSerializer
+    queryset = Country.objects.filter(is_active=True)
+    serializer_class = CountryShortSerializer
     http_method_names = ['get', 'patch', 'post']
 
     def get_permissions(self):
@@ -25,22 +25,22 @@ class CategoryViewSet(GenericViewSet,
 
     def get_serializer_class(self):
         if self.action in ('create', 'partial_update'):
-            return CategoryCreateSerializer
+            return CountryFullSerializer
         if self.action == 'list':
-            return CategoryShortSerializer
+            return CountryShortSerializer
         if self.action == 'retrieve':
-            return CategoryFullSerializer
-        if self.action == 'subcategories':
-            return CategoryChildsSerializer
+            return CountryFullSerializer
+        if self.action == 'cities':
+            return CityShortSerializer
         return self.serializer_class
     
-    @action(detail=True, methods=["get"], url_path="subcategories")
-    def subcategories(self, request, *args, **kwargs):
+    @action(detail=True, methods=["get"], url_path="cities")
+    def cities(self, request, *args, **kwargs):
         """
-        Get subcategories
+        Get cities
 
-        From this endpoint you can get all subategories by parent categor id
+        From this endpoint you can get all cities of country
         """
-        category: Category = self.get_object()
-        self.queryset = category.subcategories.filter(is_active=True)
+        country: Country = self.get_object()
+        self.queryset = country.cities.filter(is_active=True)
         return super().list(request, *args, **kwargs)

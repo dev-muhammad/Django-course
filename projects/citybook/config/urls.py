@@ -23,6 +23,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('api/v1/', include('categories.urls')),
     path('api/v1/profile/', include('users.api.urls')),
+    path('api/v1/locations/', include('locations.urls')),
+    path('api/v1/estableshments/', include('estableshments.urls')),
     path('api/v1/auth-token/', include('authentification.api.token.urls')),
     path('api/v1/auth-jwt/', include('authentification.api.jwt.urls')),
 ]

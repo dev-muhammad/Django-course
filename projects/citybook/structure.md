@@ -1,6 +1,6 @@
 # CityBook project
 
-## apps:
+## apps
 
 - common
 - users
@@ -9,7 +9,7 @@
 - locations
 - establishments
 
-## Models:
+## Models
 
 Users:
     - User (abstactUser)

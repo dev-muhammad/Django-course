@@ -16,3 +16,4 @@ class Country(BaseInfoModel):
     class Meta:
         verbose_name= 'Страна'
         verbose_name_plural = 'Страны'
+        ordering = ['title']

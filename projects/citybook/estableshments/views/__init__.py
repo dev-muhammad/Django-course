@@ -1,0 +1,1 @@
+from .place import PlaceViewSet

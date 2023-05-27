@@ -10,7 +10,6 @@ class CountryAdmin(admin.ModelAdmin):
     list_filter = ["is_active"]
     search_fields = ["title", "description"]
     readonly_fields = ['create_time', 'update_time']
-    date_hierarchy = "create_time"
 
 @admin.register(City)
 class CityAdmin(admin.ModelAdmin):
@@ -19,5 +18,4 @@ class CityAdmin(admin.ModelAdmin):
     list_filter = ["country", "is_active"]
     search_fields = ["title", "description"]
     readonly_fields = ['create_time', 'update_time']
-    date_hierarchy = "create_time"
 

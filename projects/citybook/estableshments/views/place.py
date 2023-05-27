@@ -1,22 +1,25 @@
-from rest_framework import mixins
+from rest_framework import mixins, filters
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.decorators import action
 
-from ..serializers import *
-from ..models import Category
+from ..serializers import PlaceShortSerializer, PlaceFullSerializer
+from ..models import Place
 
 
-class CategoryViewSet(GenericViewSet,
+class PlaceViewSet(GenericViewSet,
                     mixins.ListModelMixin, 
                     mixins.RetrieveModelMixin,
                     mixins.UpdateModelMixin,
                     mixins.CreateModelMixin
                     ):
     
-    queryset = Category.objects.filter(is_active=True)
-    serializer_class = CategoryShortSerializer
+    queryset = Place.objects.filter(is_active=True)
+    serializer_class = PlaceShortSerializer
     http_method_names = ['get', 'patch', 'post']
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    search_fields = ['name', 'description']
+    ordering_fields = ['name',]
 
     def get_permissions(self):
         if self.action in ('create', 'partial_update'):
@@ -25,13 +28,13 @@ class CategoryViewSet(GenericViewSet,
 
     def get_serializer_class(self):
         if self.action in ('create', 'partial_update'):
-            return CategoryCreateSerializer
+            return PlaceFullSerializer
         if self.action == 'list':
-            return CategoryShortSerializer
+            return PlaceShortSerializer
         if self.action == 'retrieve':
-            return CategoryFullSerializer
+            return PlaceFullSerializer
         if self.action == 'subcategories':
-            return CategoryChildsSerializer
+            return PlaceFullSerializer
         return self.serializer_class
     
     @action(detail=True, methods=["get"], url_path="subcategories")
@@ -41,6 +44,6 @@ class CategoryViewSet(GenericViewSet,
 
         From this endpoint you can get all subategories by parent categor id
         """
-        category: Category = self.get_object()
+        category: Place = self.get_object()
         self.queryset = category.subcategories.filter(is_active=True)
         return super().list(request, *args, **kwargs)
