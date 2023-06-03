@@ -10,6 +10,7 @@ __pycache__
 media
 static
 node_modules
+data
 .env
 .venv
 .venv/*

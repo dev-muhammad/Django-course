@@ -6,11 +6,13 @@ services:
     image: postgres
     restart: always
     ports:
-      - "5432"
+      - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=myPassW0rD
+      - POSTGRES_USER=postgres
     volumes:
       - ./data/db:/var/lib/postgresql/data
+    command: -p 5432
     networks:
       my_network:
 
@@ -25,14 +27,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    #command: > sh -c "python manage.py runserver 0.0.0.0:8000"
+    #command: sh -c "python manage.py runserver 0.0.0.0:8000"
     command: ./scripts/gunicorn.sh
+    #command: ./scripts/django.sh
     env_file:
-      - app/.env.dev
+      - .env
     networks:
       my_network:
     ports:
-      - "7000:8000"
+      - "8000:8000"
     restart: always
     volumes:
       - .:/code
@@ -50,3 +53,8 @@ services:
 networks:
   my_network:
     driver: bridge
+
+
+# volumes:
+#   my_volume:
+    
