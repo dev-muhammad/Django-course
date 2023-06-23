@@ -1,0 +1,52 @@
+version: "3.9"
+
+services:
+  db:
+    container_name: 'db'
+    image: postgres
+    restart: always
+    ports:
+      - "5432"
+    environment:
+      - POSTGRES_PASSWORD=myPassW0rD
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    networks:
+      my_network:
+
+    deploy:
+        resources:
+          limits:
+            cpus: '0.5'
+            memory: 1000M
+
+  backend:
+    container_name: 'backend'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #command: > sh -c "python manage.py runserver 0.0.0.0:8000"
+    command: ./scripts/gunicorn.sh
+    env_file:
+      - app/.env.dev
+    networks:
+      my_network:
+    ports:
+      - "7000:8000"
+    restart: always
+    volumes:
+      - .:/code
+      - ./media:/code/media
+    
+    depends_on:
+      - db
+
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1000M
+
+networks:
+  my_network:
+    driver: bridge

@@ -1,0 +1,26 @@
+[
+{
+    "model": "categories.category",
+    "pk": "e5045982-7118-4c85-8712-db4b002a3f61",
+    "fields": {
+        "create_time": "2023-05-06T04:54:00.065Z",
+        "update_time": "2023-05-06T04:54:00.065Z",
+        "is_active": true,
+        "title": "Питание",
+        "description": "Заведения в которых можно вкусно покушать",
+        "parent": null
+    }
+},
+{
+    "model": "categories.category",
+    "pk": "ebd5e7cd-7e94-4e3f-a614-9a50bbd7d9de",
+    "fields": {
+        "create_time": "2023-05-06T04:54:57.100Z",
+        "update_time": "2023-05-06T04:54:57.100Z",
+        "is_active": true,
+        "title": "Ресторан",
+        "description": "",
+        "parent": "e5045982-7118-4c85-8712-db4b002a3f61"
+    }
+}
+]

@@ -1,0 +1,24 @@
+# Exclude development files and directories
+.git
+.idea
+*.pyc
+*.pyo
+*.pyd
+__pycache__
+
+# Exclude project-specific files and directories
+media
+static
+node_modules
+data
+.env
+.venv
+.venv/*
+
+# Exclude system and temporary files
+*.swp
+.DS_Store
+Thumbs.db
+
+# Test db
+*.sqlite3
