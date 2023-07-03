@@ -1,6 +1,6 @@
 # Table of contents
 
-* [👋 Welcome!](README.md)
+* [👋 Курс Django + DRF для разработки REST приложений](README.md)
 
 ## Course
 
