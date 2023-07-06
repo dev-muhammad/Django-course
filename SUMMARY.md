@@ -1,26 +1,29 @@
 # Table of contents
 
 * [👋 Привет Django](README.md)
-* [🤓 Python](python/README.md)
-  * [🔤 Variables](python/variables.md)
-  * [🔀 If statement](python/if-statement.md)
-  * [🔁 Cycle](python/cycle.md)
-  * [🈁 Function](python/function.md)
-  * [💬 IO](python/io.md)
-  * [✅ OOP](python/oop/README.md)
-    * [Inheritance](python/oop/inheritance.md)
-    * [Encapsulation](python/oop/encapsulation.md)
-    * [Polymorphism](python/oop/polymorphism.md)
-    * [Abstraction](python/oop/abstraction.md)
-    * [Modularity](python/oop/modularity.md)
 
-## Course
+## Курс <a href="#course" id="course"></a>
 
-* [🚀 Vision, Mission & Focus](course/vision-mission-and-focus/README.md)
-  * [Vision](course/vision-mission-and-focus/vision.md)
-  * [Mission](course/vision-mission-and-focus/mission.md)
-  * [Focus](course/vision-mission-and-focus/focus.md)
+* [🤓 Python](course/python/README.md)
+  * [🔤 Переменные](course/python/peremennye.md)
+  * [🔀 Условия](course/python/usloviya.md)
+  * [🔁 Циклы](course/python/cikly.md)
+  * [🈁 Функции](course/python/funkcii.md)
+  * [💬 Ввод/Вывод](course/python/vvod-vyvod.md)
+  * [✅ ООП](course/python/oop/README.md)
+    * [Наследование](course/python/oop/nasledovanie.md)
+    * [Инкапсуляция](course/python/oop/inkapsulyaciya.md)
+    * [Полиморфизм](course/python/oop/polimorfizm.md)
+    * [Абстракция](course/python/oop/abstrakciya.md)
+    * [Модульность](course/python/oop/modulnost.md)
+* [🚀 Django](course/django/README.md)
+  * [Vision](course/django/vision.md)
+  * [Mission](course/django/mission.md)
+  * [Focus](course/django/focus.md)
+* [🧩 Технологии](course/tekhnologii/README.md)
+  * [⛓ Клиент серверная архитектура](course/tekhnologii/klient-servernaya-arkhitektura.md)
+  * [🐋 Контейнеризация](course/tekhnologii/konteinerizaciya.md)
 
-## Author
+## Автор <a href="#autor" id="autor"></a>
 
-* [About Author](author/about-author.md)
+* [Об авторе](autor/about.md)
