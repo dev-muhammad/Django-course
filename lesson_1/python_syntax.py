@@ -92,7 +92,7 @@ def my_function(arg):
 my_function(1)
 # my_function(1, 2)
 
-def my_function(value, value2):
+def my_function(value: int, value2: int) -> int:
     return value + 1
 
 my_function(1, 2)
@@ -144,7 +144,12 @@ class Animal:
     def hello(self):
         print(f"Hello {self.name}")
 
-    
+    def __str__(self) -> str:
+        return self.name
+
+animal = Animal("kuku")    
+
+animal.hello()
 
 
 my_list = [1, 2, 3, 4]
