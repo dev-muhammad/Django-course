@@ -132,3 +132,20 @@ python manage.py runserver
 ---
 
 ### Поздравляю, вы успешно создали и запустили Django проект. Создание кастомных приложений и моделей рассмотрим в следующем уроке.
+
+
+
+## Задача для практики
+Реализовать следующие эндпоинты (ручка):
+- function based view ("Привет Django")
+- class based view:
+    - get ("Привет пользователь")
+    - post ("Пользователь создан")
+    - delete ("Пользователь удален")
+    - patch ("Пользователь изменен")
+- function based view
+    - path params
+        - first_name
+        - last_name
+    - return
+        (first_name last_name)
