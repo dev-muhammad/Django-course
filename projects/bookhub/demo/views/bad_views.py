@@ -2,9 +2,9 @@ import json
 from django.views import View
 from django.http.response import JsonResponse
 
-from .models import Book
+from ..models import Book
 
-class BooksView(View):
+class BadBooksView(View):
 
     def get(self, request):
 

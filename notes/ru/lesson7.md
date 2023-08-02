@@ -9,3 +9,10 @@
 3. Представления (Views)
 4. URLs
 5. Swagger
+
+
+Установка DRF
+
+```
+pip install djangorestframework
+```
