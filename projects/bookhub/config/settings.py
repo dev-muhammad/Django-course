@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'drf_spectacular', # swagger
     
     "users",
+    "books",
+    "activity",
     "demo"
 ]
 
