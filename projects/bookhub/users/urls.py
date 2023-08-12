@@ -1,10 +1,9 @@
 from django.urls import path
-from .views import hello, user, fullname, ClassBasedView, DispatchView
+from .views import LoginView, SignUpView, LogoutView, UserAPIView
 
 urlpatterns = [
-    path('hello/', hello, name='hello'),
-    path('user/<str:name>/<str:phone>/', user, name='hello'),
-    path('user/fullname/<str:first_name>/<str:last_name>/', fullname, name='fullname'),
-    path('class/', ClassBasedView.as_view(), name='class-based'),
-    path('dispatch/', DispatchView.as_view(), name="dispatch"),
+    path('profile/', UserAPIView.as_view(), name="profile"),
+    path('signup/', SignUpView.as_view(), name='token-signup'),
+    path('login/', LoginView.as_view(), name='token-login'),
+    path('logout/', LogoutView.as_view(), name='token-logout'),
 ]

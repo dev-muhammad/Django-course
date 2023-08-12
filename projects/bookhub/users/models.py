@@ -34,8 +34,8 @@ class CustomUserManager(UserManager):
 class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     nickname = models.CharField("Никнейм", max_length=50, unique=True)
-    phone = models.CharField("Телефон", max_length=12, null=True, blank=True)
     email = models.EmailField("Почта", unique=True)
+    phone = models.CharField("Телефон", max_length=12, null=True, blank=True)
     name = models.CharField("Имя", max_length=50)
     avatar = models.ImageField("Фото", upload_to="users/avatar", null=True, blank=True)
 
