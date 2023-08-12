@@ -38,13 +38,16 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'rest_framework',
+    'rest_framework.authtoken',
     'drf_spectacular', # swagger
-    
+
     "users",
     "books",
     "activity",
     "demo"
 ]
+
+AUTH_USER_MODEL = "users.CustomUser"
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
