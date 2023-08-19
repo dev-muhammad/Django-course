@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.db.models.aggregates import Avg
 
 class Book(models.Model):
 
@@ -13,7 +13,10 @@ class Book(models.Model):
 
     @property
     def rating(self):
-        return 10
+        rate = self.reviews.aggregate(rating=Avg("rate"))["rating"]
+        if rate is None:
+            return 5
+        return rate
 
     class Meta:
         verbose_name = "Книга"

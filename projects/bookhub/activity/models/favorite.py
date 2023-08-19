@@ -18,6 +18,10 @@ class Favorite(models.Model):
         verbose_name = "Избранный"
         verbose_name_plural = "Избранные"
         ordering = ["-create_time"]
-
+    
     def __str__(self) -> str:
         return f"{self.user} - {self.book} ({self.status})"
+    
+    @property
+    def status_text(self):
+        return self.Status(self.status).label

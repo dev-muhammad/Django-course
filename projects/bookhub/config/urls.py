@@ -20,7 +20,8 @@ from django.conf import settings
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("users/", include("users.urls")),
-    path("books/", include("books.urls"))
+    path("books/", include("books.urls")),
+    path("activity/", include("activity.urls"))
 ]
 
 if (settings.DEBUG):
@@ -28,9 +29,15 @@ if (settings.DEBUG):
     from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
     urlpatterns += [
-        # YOUR PATTERNS
         path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
         # Optional UI:
         path('api/swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
         path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    ]
+
+    # debug toolbar
+    import debug_toolbar
+
+    urlpatterns +=[
+        path('__debug__/', include(debug_toolbar.urls)),
     ]

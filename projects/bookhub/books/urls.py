@@ -3,9 +3,9 @@ from rest_framework import routers
 from .views import BookApiView, GenreApiView, AuthorApiView
 
 router = routers.DefaultRouter()
-router.register("", BookApiView, "books")
 router.register("genres", GenreApiView, "genres")
 router.register("authors", AuthorApiView, "authors")
+router.register("", BookApiView, "books")
 
 
 urlpatterns = [

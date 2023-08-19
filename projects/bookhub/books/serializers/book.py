@@ -12,18 +12,18 @@ class BookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = ("title", "publish_year", "genre", "author", "pages_count", "description", "rating")
+        fields = ("id", "title", "publish_year", "genre", "author", "pages_count", "description", "rating")
 
 
 class BookCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = ("title", "publish_year", "genre", "author", "pages_count", "description")
+        fields = ("id", "title", "publish_year", "genre", "author", "pages_count", "description")
 
 
 class BookShortSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = ("title", "genre", "author", "rating")
+        fields = ("id", "title", "genre", "author", "rating")

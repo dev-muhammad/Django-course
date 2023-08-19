@@ -10,18 +10,18 @@ class AuthorSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Author
-        fields = ("first_name", "last_name", "birthdate", "avatar", "genres")
+        fields = ("id", "first_name", "last_name", "birthdate", "avatar", "genres")
 
 
 class AuthorCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Author
-        fields = ("first_name", "last_name", "birthdate", "avatar", "genres")
+        fields = ("id", "first_name", "last_name", "birthdate", "avatar", "genres")
 
 
 class AuthorShortSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Author
-        fields = ("first_name", "last_name", "avatar")
+        fields = ("id", "first_name", "last_name", "avatar")
