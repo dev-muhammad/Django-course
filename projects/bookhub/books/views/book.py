@@ -5,8 +5,9 @@ from rest_framework.generics import mixins
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.decorators import action
+from django.db.models.aggregates import Avg
 
-from ..serializers import BookSerializer, BookCreateSerializer
+from ..serializers import BookSerializer, BookCreateSerializer, BookShortSerializer
 from ..models import Book
 from activity.serializers import ReviewBookSerializer
 
@@ -29,7 +30,7 @@ class BookApiView(
     ordering_fields = ['title', 'publish_year', 'pages_count']
 
     def get_serializer_class(self):
-        if (self.action == "list"):
+        if (self.action in ["list", "retrieve"]):
             return BookSerializer
         if (self.action == "create"):
             return BookCreateSerializer
@@ -37,11 +38,11 @@ class BookApiView(
             return BookCreateSerializer
         if (self.action == "reviews"):
             return ReviewBookSerializer
-        return BookSerializer
+        return BookShortSerializer
     
     def get_queryset(self):
         if (self.action in ["list", "retrieve"]):
-            return Book.objects.all().select_related("author", "genre") 
+            return Book.objects.all().annotate(rating=Avg("reviews__rate")).select_related("author", "genre") 
         return super().get_queryset()
 
     @action(detail=True, methods=["get"], url_path="reviews")

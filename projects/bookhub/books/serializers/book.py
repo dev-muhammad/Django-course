@@ -9,11 +9,14 @@ class BookSerializer(serializers.ModelSerializer):
 
     author = AuthorShortSerializer()
     genre = GenreSerializer()
+    rating = serializers.SerializerMethodField()
 
     class Meta:
         model = Book
         fields = ("id", "title", "publish_year", "genre", "author", "pages_count", "description", "rating")
 
+    def get_rating(self, obj):
+        return obj.rating or 5
 
 class BookCreateSerializer(serializers.ModelSerializer):
 
@@ -26,4 +29,4 @@ class BookShortSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = ("id", "title", "genre", "author", "rating")
+        fields = ("id", "title", "genre", "author")

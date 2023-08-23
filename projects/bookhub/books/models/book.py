@@ -10,14 +10,6 @@ class Book(models.Model):
     pages_count = models.PositiveSmallIntegerField("Количество страниц", null=True, blank=True)
     description = models.TextField("Краткое описание", max_length=1024)
 
-
-    @property
-    def rating(self):
-        rate = self.reviews.aggregate(rating=Avg("rate"))["rating"]
-        if rate is None:
-            return 5
-        return rate
-
     class Meta:
         verbose_name = "Книга"
         verbose_name_plural = "Книги"
