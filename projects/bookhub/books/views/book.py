@@ -1,9 +1,12 @@
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
+
 from rest_framework.generics import mixins
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.decorators import action
 
-from ..serializers import BookSerializer, BookShortSerializer, BookCreateSerializer
+from ..serializers import BookSerializer, BookCreateSerializer
 from ..models import Book
 from activity.serializers import ReviewBookSerializer
 
@@ -20,6 +23,10 @@ class BookApiView(
     permission_classes = [IsAuthenticatedOrReadOnly]
     http_method_names = ["get", "post", "patch", "delete"]
     queryset = Book.objects.all()
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+    filterset_fields = ['genre', 'author']
+    search_fields = ['title', 'description', 'author__first_name', 'author__last_name']
+    ordering_fields = ['title', 'publish_year', 'pages_count']
 
     def get_serializer_class(self):
         if (self.action == "list"):
